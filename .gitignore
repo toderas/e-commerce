@@ -1,4 +1,4 @@
 .git
 .c9
-.sqlite3
+*.sqlite3
 ecommerce/__pycache__
