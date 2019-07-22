@@ -11,4 +11,4 @@ cart/migrations/__pycache__/
 products/__pycache__/
 products/migrations/
 home/__pycache__/
-home/migrations/
+home/migrations/env.py

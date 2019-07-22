@@ -7,7 +7,7 @@
     {% for item in cart_items %}
     <div class="col-10 col-md-6 col-lg-4 card">
         <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
-        <div class="caption">
+        <div class="card-body">
             <h3>{{ item.product.name }}</h3>
             <p class="product-description"> {{ item.product.description }} </p>
             <p>{{ item.product.price }}</p>
@@ -16,11 +16,11 @@
                 <div class="form-group">
                     <label for="exampleInputAmount" class="sr-only">New Qty</label>
                     <div class="input-group">
-                        <div class="input-group-addon">Qty</div>
+                        <div class="input-group-prepend">Qty</div>
                         <input name="quantity" type="number" min="0" max="999" class="form-control">
-                        <div class="input-group-addon">{{ item.quantity }}</div>
+                        <div class="input-group-append">{{ item.quantity }}</div>
                     </div>
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Ammend</button>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Add </button>
                 </div>
             </form>
         </div>
@@ -29,7 +29,7 @@
 </div>
 <div class="row">
     <p>Total</p>
-    <p><span class="glyphicon glyphicon-gbp" aria-hidden="true"></span>{{total}}</p>
+    <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{total}}</p>
     <a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
 </div>
 {% endblock %}

@@ -4,6 +4,7 @@
 <head>
     <!--CSS File-->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'font-awesome/css/fontawesome.min.css' %}">
     <!--END-->
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -18,25 +19,48 @@
 
 
     <nav class="navbar navbar-dark bg-dark">
-        <ul class="nav nav-pills">
-            {% if user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-            {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'registration' %}">Register</a></li>
-            {% endif %}
-        </ul>
+        <div class="container">
+            <ul class="nav nav-pills">
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'registration' %}">Register</a></li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'view_cart' %}">
+                <i class="fas fa-shopping-cart"></i>Cart
+                {% if product_count > 0 %}
+                <label class="badge badge-warning">{{ product_count }}</label>
+                {% endif %}
+            </a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <h1>
-        {% block page_heading %}{% endblock %}
-    </h1>
     {% if messages %}
-    <div>
-        {% for message in messages %} {{ message }} {% endfor %}
+    <div class="alert alert-success">
+        <div class="messages">
+            {% for message in messages %} {{ message }} {% endfor %}
+        </div>
     </div>
-    {% endif %} {% block content %}{% endblock %}
+    {% endif %}
+    <div class="container">
+        <div class="display">
+            <form action="{% url 'search' %}" method="get">
+                <input type="text" name="q">
+                <button type="search">Search</button>
+            </form>
+        </div>
+        {% block content %} {% endblock %}
+    </div>
+    <footer>
+        <div class="container">
+            <p>Made by Code Institute bootcampers</p>
+        </div>
+    </footer>
 </body>
 
 
