@@ -13,3 +13,4 @@ products/migrations/
 home/__pycache__/
 home/migrations/env.py
 env.py
+checkout/__pycache__
