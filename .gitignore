@@ -1,6 +1,6 @@
 .git
 .c9
-*.sqlite3
+.sqlite3
 ecommerce/__pycache__
 accounts/__pycache__
 accounts/migrations/__pycache__
@@ -17,5 +17,3 @@ checkout/__pycache__
 __pycache__
 checkout/__init__.py
 checkout/migrations/
-
-
